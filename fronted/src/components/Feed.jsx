@@ -5,14 +5,17 @@ import Pins from '../container/Pins'
 import { feedQuery, searchQuery } from '../utils/data'
 import MasonryLayout from './MasonryLayout'
 import Spinner from './Spinner'
+
 const Feed = () => {
+    const [pins, setPins]= useState()
     const [loading, setLoading]=useState(false)
-    const [pins, setPins]= useState(null)
+    
     const {categoryId}=useParams();
 
     useEffect(()=>{
-        // setLoading(true)
+        
         if(categoryId){
+            setLoading(true)
             const query= searchQuery(categoryId)
 
             client.fetch(query)
